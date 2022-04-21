@@ -1,66 +1,36 @@
-# Udatcity - Data Engineering Nanodgree Program
-Learn to design data models, build data warehouses and data lakes, automate data pipelines, and work with massive datasets.
+# Project: Data Lakes with Spark
 
-* Create user-friendly relational and NoSQL data models
-* Create scalable and efficient data warehouses
-* Work efficiently with massive datasets
-* Build and interact with a cloud-based data lake
-* Automate and monitor data pipelines
-* Develop proficiency in Spark, Airflow, and AWS tools
+## Introduction
+A music streaming startup, Sparkify, has grown their user base and song database even more and want to move their data warehouse to a data lake. Their data resides in S3, in a directory of JSON logs on user activity on the app, as well as a directory with JSON metadata on the songs in their app.
 
+As their data engineer, you are tasked with building an ETL pipeline that extracts their data from S3, processes them using Spark, and loads the data back into S3 as a set of dimensional tables. This will allow their analytics team to continue finding insights in what songs their users are listening to.
 
-## Course 1 - Data Modeling
-Learn to create relational and NoSQL data models to fit the diverse needs of data consumers. Use ETL to build databases in PostgreSQL and Apache Cassandra.
+You'll be able to test your database and ETL pipeline by running queries given to you by the analytics team from Sparkify and compare your results with their expected results.
 
-### Contents
-* Introduction to Data Modeling
-* Relational Data Models
-* NoSQL Data Models
+## Project Description
+In this project, you'll apply what you've learned on Spark and data lakes to build an ETL pipeline for a data lake hosted on S3. To complete the project, you will need to load data from S3, process the data into analytics tables using Spark, and load them back into S3. You'll deploy this Spark process on a cluster using AWS.
 
-### Projects
-* Data Modeling with Postgres
-* Data Modeling with Apache Cassandra
+## Sparkify
 
+Sparkify require analytics, maybe even offer recommendations to their clients, or other uses cases. In order to do so, they would require that their data be processed and ready. Perhaps at some point, their database has grown past a certain point where they need a data lake. It would then be necessary to use tools like Spark and storage systems like HDFS to better deal with their data.
 
-## Course 2 - Cloud Data Warehouses
-Learn to create cloud-based data warehouses. Sharpen your data warehousing skills, deepen your understanding of data infrastructure, and be introduced to data engineering on the cloud using Amazon Web Services (AWS).
+## Files: 
 
-#### Contents
-* Introduction to the Data Warehouses
-* Introduction to the Cloud with AWS
-* Implementing Data Warehouses on AWS
+1. **create_s3.py** Creates an s3 bucket using boto3.
+2. **etl.py** Runs the ETL process required to get the songs, users, artists, time and songplays tables.
+3. **delete_s3.py** Empties and deletes the s3 bucket.
+4. **unzip_files.py** unzips the zip files (a necessary step to upload to s3).
+5. **Notebook.ipynb** is where some preliminiary data wrangling was done. 
+6. **dl.cfg** Contains the AWS secret and ID 
 
-### Project
-* Build a Cloud Data Warehouse
+## ETL Design
 
+In this project, I have created my own S3 (I felt like I could use the practice with boto3), where I process the data in Spark and write it back to the S3. I have left a small figure for this design:
 
-## Course 3 - Data Lake with Spark
-Learn more about the big data ecosystem and how to use Spark to work with massive datasets. Learn about how to store big data in a data lake and query it with Spark.
+![ETL](ETL_Structure.PNG)
 
-#### Contents
-* The Power of Spark
-* Data Wrangling with Spark
-* Debugging and Optimization
-* Introduction to Data Lake
+## Star Schema 
 
-### Project
-* Build a Data Lake
+Below is a diagram of the Star Schema for this project
 
-
-## Course 4 - Data Pipelines with Airflow
-Learn to schedule, automate, and monitor data pipelines using Apache Airflow. Learn to run data quality checks, track data lineage, and work with data pipelines in production.
-
-#### Contents
-* Data Pipelines
-* Data Quality
-* Production Data Pipelines
-
-### Project
-* Data Pipelines with Airflow
-
-
-## Final Project - DEND Capstone Project
-Combine all the skills throughout the program to build your own data engineering portfolio project.
-
-### Project
-* Data Engineer Capstone
+![schema](star_schema.PNG)
